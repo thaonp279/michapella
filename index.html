@@ -1,0 +1,171 @@
+<head>
+    <script src="https://kit.fontawesome.com/2e73c01fb6.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2vw;
+        }
+        body {
+            font-family: monospace;
+            border-style: solid;
+            border-width: 10px
+        }
+        h1 {
+            text-align: center;
+            font-size: 5vw;
+        }
+        #animated-band {
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+          flex-wrap: wrap;
+        }
+        #animated-band .animated {
+            min-width: 80px;
+            min-height: 150px;
+            height: 17vw;
+            margin: 1vw;
+            position: relative;
+        }
+
+        #animated-band .animated img {
+            object-fit: cover;
+            height: 100%;
+            cursor: pointer;
+        }
+        .inactive {
+            filter: saturate(0);
+            opacity: 0.5;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            font-size: 2.5vw;
+          flex-wrap: wrap;
+        }
+        
+        .buttons .button {
+            width: 3.5vw;
+            height: 3.5vw;
+            border-style: solid;
+            background: LightGrey;
+            color: black;
+            border-radius: 10%;
+            margin-left: 1.5vw;
+            text-align: center;
+            line-height: 3.5vw;
+            cursor: pointer;
+        }
+
+        .standby {
+            display: none;
+        }
+
+        #intro {
+            border-style: solid;
+            padding: 1em;
+            width: max-content;
+            font-size: 1.5vw;
+        }
+
+        .loader {
+            margin-top: 10px;
+            width: 75%;
+            height: 6px;
+            background: black;
+            margin: auto;
+        }
+        .loader .loading {
+            height: 100%;
+            background: pink;
+        }
+
+        .invisible{
+            display: none;
+        }
+
+
+    </style>
+  </head>
+  <div class="container">
+    <h1>Mich-apella</h1>
+    <div id="intro"></div>
+    <div id="animated-band">
+      <div class="animated">
+        <img id="slot-1" class="inactive" ondragover="allowDrop(event)" ondrop="drop(event)" onclick="remove(event)" src="https://www.dropbox.com/s/crbut5o0cp9286e/Main.png?raw=1"/>
+        <div id="slot-1-loader" class="loader invisible">
+          <div class="loading"></div>
+        </div>
+      </div>
+      <div class="animated">
+        <img id="slot-2" class="inactive" ondragover="allowDrop(event)" ondrop="drop(event)" onclick="remove(event)" src="https://www.dropbox.com/s/crbut5o0cp9286e/Main.png?raw=1"/>
+        <div id="slot-2-loader" class="loader invisible">
+          <div class="loading"></div>
+        </div>
+      </div>
+      <div class="animated">
+        <img id="slot-3" class="inactive" ondragover="allowDrop(event)" ondrop="drop(event)" onclick="remove(event)" src="https://www.dropbox.com/s/crbut5o0cp9286e/Main.png?raw=1"/>
+        <div id="slot-3-loader" class="loader invisible">
+          <div class="loading"></div>
+        </div>
+      </div>
+      <div class="animated">
+        <img id="slot-4" class="inactive" ondragover="allowDrop(event)" ondrop="drop(event)" onclick="remove(event)" src="https://www.dropbox.com/s/crbut5o0cp9286e/Main.png?raw=1"/>
+        <div id="slot-4-loader" class="loader invisible">
+          <div class="loading"></div>
+        </div>
+      </div>
+      <div class="animated">
+        <img id="slot-5" class="inactive" ondragover="allowDrop(event)" ondrop="drop(event)" onclick="remove(event)" src="https://www.dropbox.com/s/crbut5o0cp9286e/Main.png?raw=1"/>
+        <div id="slot-5-loader" class="loader invisible">
+          <div class="loading"></div>
+        </div>
+      </div>
+      <div class="animated">
+        <img id="slot-6" class="inactive" ondragover="allowDrop(event)" ondrop="drop(event)" onclick="remove(event)" src="https://www.dropbox.com/s/crbut5o0cp9286e/Main.png?raw=1"/>
+      <div id="slot-6-loader" class="loader invisible">
+          <div class="loading"></div>
+        </div>
+    </div>
+    </div>
+    <div class="buttons">
+      <i id="main-guitar" class="button fas fa-guitar" draggable="true" ondragstart="drag(event)"></i>
+      <i id="vocal-1" class="button fas fa-microphone" draggable="true" ondragstart="drag(event)"></i>
+      <i id="vocal-2" class="button fas fa-microphone" draggable="true" ondragstart="drag(event)"></i>
+      <i id="vocal-3" class="button fas fa-microphone" draggable="true" ondragstart="drag(event)"></i>
+      <i id="chorus-1" class="button fas fa-microphone-alt" draggable="true" ondragstart="drag(event)"></i>
+      <i id="chorus-2" class="button fas fa-microphone" draggable="true" ondragstart="drag(event)"></i>
+      <i id="chorus-3" class="button fas fa-microphone" draggable="true" ondragstart="drag(event)"></i>
+      <i id="guitar-1" class="button fas fa-guitar" draggable="true" ondragstart="drag(event)"></i>
+      <i id="guitar-2" class="button fas fa-guitar" draggable="true" ondragstart="drag(event)"></i>
+    </div>
+  </div>
+  
+  
+  <audio id="main-guitar-audio" src="https://www.dropbox.com/s/zeprlq873aozeh6/Main%20Guitar.wav?raw=1" >
+  <audio id="vocal-1-audio" src="https://www.dropbox.com/s/hroox68uv5t45xd/Vocal%201.wav?raw=1">
+  <audio id="vocal-2-audio" src="https://www.dropbox.com/s/xcqjd085j6ct3ek/Vocal%202.wav?raw=1">
+  <audio id="vocal-3-audio" src="https://www.dropbox.com/s/hw6lbdwupxbz6pm/Vocal%203.wav?raw=1">
+  <audio id="chorus-1-audio" src="https://www.dropbox.com/s/b5ej61lmy7jpcwv/Chorus%201.wav?raw=1">
+  <audio id="chorus-2-audio" src="https://www.dropbox.com/s/b1wt4q65osnzgc7/Chorus%202.wav?raw=1">
+  <audio id="chorus-3-audio" src="https://www.dropbox.com/s/mni2k05t8p6u36d/Chorus%203.wav?raw=1">
+  <audio id="guitar-1-audio" src="https://www.dropbox.com/s/8iq13qhdqd3naex/Guitar%201.wav?raw=1">
+  <audio id="guitar-2-audio" src="https://www.dropbox.com/s/avs7ecq1pbom8tk/Guitar%202.wav?raw=1">
+  
+  <img id="main-guitar-img" class="standby" src="https://www.dropbox.com/s/ulofli4omkovvwv/Guitar%201.png?raw=1" />
+  <img id="vocal-1-img" class="standby" src="https://www.dropbox.com/s/fw6qia8l1cy1h2d/Open%20Peeps%20-%20Bust%20%281%29.png?raw=1" />
+  <img id="vocal-2-img" class="standby" src="https://www.dropbox.com/s/puqnl225qci6hny/Vocal%202.png?raw=1" />
+  <img id="vocal-3-img" class="standby" src="https://www.dropbox.com/s/661lyb6p7ir9sjl/Vocal%203.png?raw=1" />
+  <img id="chorus-1-img" class="standby" src="https://www.dropbox.com/s/ocmuws76m77cwrq/Chorus%201.png?raw=1" />
+  <img id="chorus-2-img" class="standby" src="https://www.dropbox.com/s/xrac53q5qfr036x/Chorus%202.png?raw=1" />
+  <img id="chorus-3-img" class="standby" src="https://www.dropbox.com/s/qm7mvfjrkv33p6e/Chorus%203.png?raw=1" />
+  <img id="guitar-1-img" class="standby" src="https://www.dropbox.com/s/ey966u5kv8nqfdu/Guitar%201.png?raw=1" />
+  <img id="guitar-2-img" class="standby" src="https://www.dropbox.com/s/xqxslc3kpqq7wtb/Guitar%202.png?raw=1" />
+
+  <script src="index.js"></script>
